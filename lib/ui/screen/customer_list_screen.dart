@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:user_manager/data/repository/fire_store.dart';
 import 'package:user_manager/ui/screen/customer_details_screen.dart';
 import 'package:user_manager/ui/screen/edit_user.dart';
+import 'package:user_manager/ui/widgets/drawer.dart';
 
 import 'add_user_screen.dart';
 
@@ -25,6 +26,7 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MyDrawer(),
       appBar: AppBar(
         title: Text('Customer List'),
       ),

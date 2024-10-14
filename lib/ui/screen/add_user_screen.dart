@@ -38,7 +38,7 @@ class _AddUserScreenState extends State<AddUserScreen> {
         child: GetBuilder<SetValueController>(builder: (setValueController) {
           return Visibility(
             visible: !setValueController.loading,
-            replacement: Center(
+            replacement: const Center(
               child: CircularProgressIndicator(),
             ),
             child: Column(
