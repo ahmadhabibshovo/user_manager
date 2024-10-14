@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1018307728212",
+    "project_id": "customer-manager-2cab5",
+    "storage_bucket": "customer-manager-2cab5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1018307728212:android:9303eba1eb983094af6ec1",
+        "android_client_info": {
+          "package_name": "com.ahmadhabibshovo.user_manager"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkElVUjCJYmjPFm3RjFlmuP6ifssDUu6s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
