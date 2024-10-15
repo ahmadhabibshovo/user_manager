@@ -13,6 +13,11 @@ class MyDrawer extends StatefulWidget {
 
 class MyDrawerState extends State<MyDrawer> {
   String searchQuery = '';
+  @override
+  void initState() {
+    Get.find<SetValueController>().setValues();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +51,7 @@ class MyDrawerState extends State<MyDrawer> {
               onChanged: (value) {
                 setState(() {
                   searchQuery = value;
-                  Get.find<FilterController>().searchFilter = value;
+                  Get.find<FilterController>().setSearchFilter(value);
                 });
               },
             ),
@@ -54,29 +59,29 @@ class MyDrawerState extends State<MyDrawer> {
           SingleChoice(
             choices: const ["All", "Active", "Deactive"],
             onSelect: (value) {
-              Get.find<FilterController>().activeStatus = value;
+              Get.find<FilterController>().setActiveStatus(value);
             },
           ),
           SingleChoice(
               onSelect: (value) {
-                Get.find<FilterController>().billStatus = value;
+                Get.find<FilterController>().setBillStatus(value);
               },
               choices: const ["Due", "Advance"]),
           SingleChoice(
               onSelect: (value) {
-                Get.find<FilterController>().ispFilter = value;
+                Get.find<FilterController>().setIspFilter(value);
               },
               label: "ISP",
               choices: Get.find<SetValueController>().isp),
           SingleChoice(
               onSelect: (value) {
-                Get.find<FilterController>().activeStatus = value;
+                Get.find<FilterController>().setActiveStatus(value);
               },
               label: "Area",
               choices: Get.find<SetValueController>().area),
           SingleChoice(
               onSelect: (value) {
-                Get.find<FilterController>().popFilter = value;
+                Get.find<FilterController>().setPopFilter(value);
               },
               label: "Pop",
               choices: Get.find<SetValueController>().pop),

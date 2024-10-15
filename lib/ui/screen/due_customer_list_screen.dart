@@ -8,18 +8,20 @@ import 'package:user_manager/ui/widgets/drawer.dart';
 
 import 'add_user_screen.dart';
 
-class CustomerListScreen extends StatefulWidget {
-  const CustomerListScreen({super.key});
+class DueCustomerListScreen extends StatefulWidget {
+  const DueCustomerListScreen({super.key});
 
   @override
-  State<CustomerListScreen> createState() => _CustomerListScreenState();
+  State<DueCustomerListScreen> createState() => _DueCustomerListScreenState();
 }
 
-class _CustomerListScreenState extends State<CustomerListScreen> {
+class _DueCustomerListScreenState extends State<DueCustomerListScreen> {
   late final CollectionReference documentList;
   @override
   void initState() {
-    documentList = FireStore.get(documentName: 'customer');
+    documentList = FirebaseFirestore.instance.collection('customer')
+      ..where('customer_due', isGreaterThan: 0);
+    ;
     super.initState();
   }
 
@@ -28,7 +30,7 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
     return Scaffold(
       drawer: const MyDrawer(),
       appBar: AppBar(
-        title: const Text('Customer List'),
+        title: const Text('Due Customer'),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: documentList.snapshots(),

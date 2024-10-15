@@ -35,7 +35,7 @@ class _EditUserScreenState extends State<EditUserScreen> {
     customerNameTEController.text = widget.user["customer_name"];
     ispBillTEController.text = widget.user["isp_bill"];
     customerBillTEController.text = widget.user["customer_bill"];
-    dueTEController.text = widget.user["customer_due"];
+    dueTEController.text = widget.user["customer_due"].toString();
     mobileTEController.text = widget.user['mobile'];
     super.initState();
   }
@@ -50,7 +50,7 @@ class _EditUserScreenState extends State<EditUserScreen> {
         child: GetBuilder<SetValueController>(builder: (setValueController) {
           return Visibility(
             visible: !setValueController.loading,
-            replacement: Center(
+            replacement: const Center(
               child: CircularProgressIndicator(),
             ),
             child: Column(
@@ -113,7 +113,7 @@ class _EditUserScreenState extends State<EditUserScreen> {
                             "customer_name": customerNameTEController.text,
                             "isp_bill": ispBillTEController.text,
                             "customer_bill": customerBillTEController.text,
-                            "customer_due": dueTEController.text,
+                            "customer_due": int.parse(dueTEController.text),
                             "area": setValueController.selectedArea,
                             "pop": setValueController.selectedPop,
                             'mobile': mobileTEController.text,

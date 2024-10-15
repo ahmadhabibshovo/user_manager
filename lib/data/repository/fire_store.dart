@@ -38,6 +38,18 @@ class FireStore {
     }
   }
 
+  static Future<int> totalDue() async {
+    Query collection = FirebaseFirestore.instance
+        .collection('customer')
+        .where('customer_due', isGreaterThan: 0);
+    QuerySnapshot data = await collection.get();
+    int sum = 0;
+    for (var item in data.docs) {
+      sum += item['customer_due'] as int;
+    }
+    return sum;
+  }
+
   static update(
       {required Map<String, dynamic> data,
       required String docName,
