@@ -124,6 +124,8 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                                             documentName: 'payment',
                                             document: {
                                               'id': data[index].id,
+                                              'name': data[index]
+                                                  ['customer_name'],
                                               'time': DateTime.now(),
                                               'amount': int.parse(amount)
                                             });

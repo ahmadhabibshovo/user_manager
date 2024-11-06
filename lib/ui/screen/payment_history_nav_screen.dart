@@ -19,46 +19,55 @@ class _PaymentHistoryNavScreenState extends State<PaymentHistoryNavScreen> {
       appBar: AppBar(
         title: Text('Payment History'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          GestureDetector(
-              onTap: () async {
-                final DateTime? date = await showDatePicker(
-                  context: context,
-                  initialDate: DateTime.now(),
-                  firstDate: DateTime(2016),
-                  lastDate: DateTime.now(),
-                );
-                if (date != null) {
-                  context.navigator.pushMaterial(PaymentHistoryScreen());
-                }
-              },
-              child: CapsuleContainer(
-                  child: Text(
-                'Single',
-                style: context.textStyles.titleLarge,
-              ))),
-          GestureDetector(
-              onTap: () async {
-                DateTimeRange? dateRange = await showDateRangePicker(
-                  context: context,
-                  firstDate: DateTime(2016),
-                  lastDate: DateTime.now(),
-                );
-                if (dateRange != null) {
-                  context.navigator.pushMaterial(PaymentHistoryScreen());
-                }
-              },
-              child: CapsuleContainer(
-                  child: Text(
-                'Range',
-                style: context.textStyles.titleLarge,
-              )))
-        ].separatedBy(SizedBox(
-          height: 20,
-        )),
+      body: SizedBox(
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            GestureDetector(
+                onTap: () async {
+                  final DateTime? date = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(2016),
+                    lastDate: DateTime.now(),
+                  );
+                  if (date != null) {
+                    context.navigator.pushMaterial(PaymentHistoryScreen(
+                      date: date,
+                      isRange: false,
+                    ));
+                  }
+                },
+                child: CapsuleContainer(
+                    child: Text(
+                  'Single',
+                  style: context.textStyles.titleLarge,
+                ))),
+            GestureDetector(
+                onTap: () async {
+                  DateTimeRange? dateRange = await showDateRangePicker(
+                    context: context,
+                    firstDate: DateTime(2016),
+                    lastDate: DateTime.now(),
+                  );
+                  if (dateRange != null) {
+                    context.navigator.pushMaterial(PaymentHistoryScreen(
+                      date: dateRange,
+                      isRange: true,
+                    ));
+                  }
+                },
+                child: CapsuleContainer(
+                    child: Text(
+                  'Range',
+                  style: context.textStyles.titleLarge,
+                )))
+          ].separatedBy(SizedBox(
+            height: 20,
+          )),
+        ),
       ),
     );
   }

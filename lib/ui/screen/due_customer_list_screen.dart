@@ -57,52 +57,54 @@ class _DueCustomerListScreenState extends State<DueCustomerListScreen> {
                         data[index]['customer_name'],
                       )),
                       Align(
-                          alignment: Alignment.topRight,
-                          child: PopupMenuButton<String>(
-                            onSelected: (newValue) async {
-                              if (newValue == "Active") {
+                        alignment: Alignment.topRight,
+                        child: PopupMenuButton<String>(
+                          onSelected: (newValue) async {
+                            if (newValue == "Active") {
+                              FireStore.update(
+                                  data: {"isActive": !data[index]['isActive']},
+                                  docName: 'customer',
+                                  id: data[index].id);
+                            }
+                            if (newValue == "Payment") {
+                              var amount =
+                                  await PaymentDialog.showTextInputDialog(
+                                      context: context,
+                                      username: data[index]['customer_name']);
+                              if (amount != null) {
                                 FireStore.update(data: {
-                                  "isActive": !data[index]['isActive']
+                                  'customer_due': data[index]['customer_due'] -
+                                      int.parse(amount)
                                 }, docName: 'customer', id: data[index].id);
+                                FireStore.add(
+                                    documentName: 'payment',
+                                    document: {
+                                      'id': data[index].id,
+                                      'name': data[index]['customer_name'],
+                                      'time': DateTime.now(),
+                                      'amount': int.parse(amount)
+                                    });
                               }
-                              if (newValue == "Payment") {
-                                var amount =
-                                    await PaymentDialog.showTextInputDialog(
-                                        context: context,
-                                        username: data[index]['customer_name']);
-                                if (amount != null) {
-                                  FireStore.update(data: {
-                                    'customer_due': data[index]
-                                            ['customer_due'] -
-                                        int.parse(amount)
-                                  }, docName: 'customer', id: data[index].id);
-                                  FireStore.add(
-                                      documentName: 'payment',
-                                      document: {
-                                        'id': data[index]['customer_name'],
-                                        'time': DateTime.now(),
-                                        'amount': int.parse(amount)
-                                      });
-                                }
-                              }
-                            },
-                            itemBuilder: (BuildContext context) {
-                              return <PopupMenuEntry<String>>[
-                                const PopupMenuItem<String>(
-                                  value: 'Payment',
-                                  child: Text('Payment'),
-                                ),
-                                PopupMenuItem<String>(
-                                  value: 'Active',
-                                  child: Text(data[index]['isActive']
-                                      ? 'DeActivate'
-                                      : "Activate"),
-                                ),
-                              ];
-                            },
-                            child: const Icon(Icons
-                                .menu), // Replace with your desired button child
-                          ))
+                            }
+                          },
+                          itemBuilder: (BuildContext context) {
+                            return <PopupMenuEntry<String>>[
+                              const PopupMenuItem<String>(
+                                value: 'Payment',
+                                child: Text('Payment'),
+                              ),
+                              PopupMenuItem<String>(
+                                value: 'Active',
+                                child: Text(data[index]['isActive']
+                                    ? 'DeActivate'
+                                    : "Activate"),
+                              ),
+                            ];
+                          },
+                          child: const Icon(Icons
+                              .menu), // Replace with your desired button child
+                        ),
+                      )
                     ],
                   ),
                 );
