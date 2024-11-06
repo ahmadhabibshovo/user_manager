@@ -4,16 +4,26 @@ import 'package:flutter/material.dart';
 
 class SingleChoice extends StatefulWidget {
   SingleChoice(
-      {super.key, required this.choices, this.label, required this.onSelect});
+      {super.key,
+      required this.choices,
+      this.label,
+      required this.onSelect,
+      required String? selectedValue});
   final List<String> choices;
   final Function(String?) onSelect;
   String? label;
+  String? selectedValue;
   @override
   State<SingleChoice> createState() => _SingleChoiceState();
 }
 
 class _SingleChoiceState extends State<SingleChoice> {
   String? singleSelected;
+  @override
+  void initState() {
+    singleSelected = widget.selectedValue;
+    super.initState();
+  }
 
   void setSingleSelected(String? value) {
     setState(() => singleSelected = value);

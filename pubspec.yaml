@@ -42,6 +42,9 @@ dependencies:
   get: ^4.6.6
   intl: ^0.19.0
   choice: ^2.3.2
+  flutter_date_range_picker: ^0.1.1
+  shared_preferences: ^2.3.2
+  internet_connectivity_checker: ^1.0.2
 
 dev_dependencies:
   flutter_test:

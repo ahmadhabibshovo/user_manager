@@ -4,14 +4,14 @@ import 'package:user_manager/ui/state_holders/filter_controller.dart';
 import 'package:user_manager/ui/state_holders/set_value_controller.dart';
 import 'package:user_manager/ui/widgets/single_choice.dart';
 
-class MyDrawer extends StatefulWidget {
-  const MyDrawer({super.key});
+class Due_Drawer extends StatefulWidget {
+  const Due_Drawer({super.key});
 
   @override
-  MyDrawerState createState() => MyDrawerState();
+  Due_DrawerState createState() => Due_DrawerState();
 }
 
-class MyDrawerState extends State<MyDrawer> {
+class Due_DrawerState extends State<Due_Drawer> {
   final search = TextEditingController();
   @override
   void initState() {
@@ -64,37 +64,28 @@ class MyDrawerState extends State<MyDrawer> {
             },
             selectedValue: Get.find<FilterController>().activeStatus,
           ),
+
           SingleChoice(
-            onSelect: (value) {
-              Get.find<FilterController>().setBillStatus(value);
-            },
-            choices: const ["All", "Due", "Advance"],
-            selectedValue: Get.find<FilterController>().billStatus,
-          ),
+              onSelect: (value) {
+                Get.find<FilterController>().setIspFilter(value);
+              },
+              label: "ISP",
+              choices: ["All", ...Get.find<SetValueController>().isp],
+              selectedValue: Get.find<FilterController>().ispFilter),
           SingleChoice(
-            onSelect: (value) {
-              Get.find<FilterController>().setIspFilter(value);
-            },
-            label: "ISP",
-            choices: ["All", ...Get.find<SetValueController>().isp],
-            selectedValue: Get.find<FilterController>().ispFilter,
-          ),
+              onSelect: (value) {
+                Get.find<FilterController>().setActiveStatus(value);
+              },
+              label: "Area",
+              choices: ["All", ...Get.find<SetValueController>().area],
+              selectedValue: Get.find<FilterController>().areaFilter),
           SingleChoice(
-            onSelect: (value) {
-              Get.find<FilterController>().setActiveStatus(value);
-            },
-            label: "Area",
-            choices: ["All", ...Get.find<SetValueController>().area],
-            selectedValue: Get.find<FilterController>().areaFilter,
-          ),
-          SingleChoice(
-            onSelect: (value) {
-              Get.find<FilterController>().setPopFilter(value);
-            },
-            label: "Pop",
-            choices: ["All", ...Get.find<SetValueController>().pop],
-            selectedValue: Get.find<FilterController>().popFilter,
-          ),
+              onSelect: (value) {
+                Get.find<FilterController>().setPopFilter(value);
+              },
+              label: "Pop",
+              choices: ["All", ...Get.find<SetValueController>().pop],
+              selectedValue: Get.find<FilterController>().areaFilter),
         ],
       ),
     );

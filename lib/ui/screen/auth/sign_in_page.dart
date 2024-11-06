@@ -1,6 +1,7 @@
 import 'package:awesome_flutter_extensions/awesome_flutter_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:user_manager/ui/screen/home_screen.dart';
+import 'package:user_manager/ui/state_holders/auth_controller.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -38,6 +39,7 @@ class _SignInPageState extends State<SignInPage> {
   Widget _signInButton() => ElevatedButton(
       onPressed: () {
         if (_userNameTEC.text == "tofa" && _passwordTEC.text == "nibir") {
+          AuthController.saveLogin();
           context.navigator.pushReplacement(
               MaterialPageRoute(builder: (context) => const HomeScreen()));
         }

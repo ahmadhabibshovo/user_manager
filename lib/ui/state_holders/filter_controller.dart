@@ -1,16 +1,15 @@
 import 'package:get/get.dart';
 
-import '../../data/repository/fire_store.dart';
-
 class FilterController extends GetxController {
-  String? activeStatus;
-  String? billStatus;
-  String? ispFilter;
-  String? areaFilter;
-  String? popFilter;
+  String? activeStatus = 'All';
+  String? billStatus = "All";
+  String? ispFilter = "All";
+  String? areaFilter = "All";
+  String? popFilter = "All";
   String? searchFilter;
   setActiveStatus(String? value) {
     activeStatus = value;
+
     update();
   }
 
@@ -39,7 +38,27 @@ class FilterController extends GetxController {
     update();
   }
 
-  filteredDocument() {
-    return FireStore.get(documentName: 'customer');
+  filteredDocument(dynamic data) {
+    if (activeStatus == 'Active') {
+      data = data.where('isActive', isEqualTo: true);
+    } else if (activeStatus == 'Deactive') {
+      data = data.where('isActive', isEqualTo: false);
+    }
+    if (billStatus == 'Due') {
+      data = data.where('customer_due', isGreaterThan: 0);
+    } else if (billStatus == 'Advance') {
+      data = data.where('customer_due', isLessThan: 0);
+    }
+    if (popFilter != 'All') {
+      data = data.where('pop', isEqualTo: popFilter);
+    }
+    if (areaFilter != 'All') {
+      data = data.where('area', isEqualTo: areaFilter);
+    }
+    if (ispFilter != 'All') {
+      data = data.where('isp_name', isEqualTo: ispFilter);
+    }
+
+    return data;
   }
 }
