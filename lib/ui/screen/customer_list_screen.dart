@@ -37,7 +37,7 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
       body: GetBuilder<FilterController>(builder: (filterController) {
         return StreamBuilder<QuerySnapshot>(
           stream: filterController
-              .filteredDocument(FireStore.get(documentName: 'customer'))
+              .filteredDocument(FireStore.get(documentName: 'customer'),)
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {

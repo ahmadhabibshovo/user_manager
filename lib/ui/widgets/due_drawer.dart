@@ -4,14 +4,14 @@ import 'package:user_manager/ui/state_holders/filter_controller.dart';
 import 'package:user_manager/ui/state_holders/set_value_controller.dart';
 import 'package:user_manager/ui/widgets/single_choice.dart';
 
-class Due_Drawer extends StatefulWidget {
-  const Due_Drawer({super.key});
+class DueDrawer extends StatefulWidget {
+  const DueDrawer({super.key});
 
   @override
-  Due_DrawerState createState() => Due_DrawerState();
+  DueDrawerState createState() => DueDrawerState();
 }
 
-class Due_DrawerState extends State<Due_Drawer> {
+class DueDrawerState extends State<DueDrawer> {
   final search = TextEditingController();
   @override
   void initState() {
@@ -57,35 +57,9 @@ class Due_DrawerState extends State<Due_Drawer> {
               },
             ),
           ),
-          SingleChoice(
-            choices: const ["All", "Active", "Deactive"],
-            onSelect: (value) {
-              Get.find<FilterController>().setActiveStatus(value);
-            },
-            selectedValue: Get.find<FilterController>().activeStatus,
-          ),
 
-          SingleChoice(
-              onSelect: (value) {
-                Get.find<FilterController>().setIspFilter(value);
-              },
-              label: "ISP",
-              choices: ["All", ...Get.find<SetValueController>().isp],
-              selectedValue: Get.find<FilterController>().ispFilter),
-          SingleChoice(
-              onSelect: (value) {
-                Get.find<FilterController>().setActiveStatus(value);
-              },
-              label: "Area",
-              choices: ["All", ...Get.find<SetValueController>().area],
-              selectedValue: Get.find<FilterController>().areaFilter),
-          SingleChoice(
-              onSelect: (value) {
-                Get.find<FilterController>().setPopFilter(value);
-              },
-              label: "Pop",
-              choices: ["All", ...Get.find<SetValueController>().pop],
-              selectedValue: Get.find<FilterController>().areaFilter),
+
+
         ],
       ),
     );

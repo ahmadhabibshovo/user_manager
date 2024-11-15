@@ -44,11 +44,13 @@ class FilterController extends GetxController {
     } else if (activeStatus == 'Deactive') {
       data = data.where('isActive', isEqualTo: false);
     }
+
     if (billStatus == 'Due') {
       data = data.where('customer_due', isGreaterThan: 0);
     } else if (billStatus == 'Advance') {
       data = data.where('customer_due', isLessThan: 0);
     }
+
     if (popFilter != 'All') {
       data = data.where('pop', isEqualTo: popFilter);
     }

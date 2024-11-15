@@ -7,12 +7,13 @@ class SingleChoice extends StatefulWidget {
       {super.key,
       required this.choices,
       this.label,
-      required this.onSelect,
-      required String? selectedValue});
+      required this.onSelect, required this.selectedValue,
+      });
+  final String? selectedValue;
   final List<String> choices;
   final Function(String?) onSelect;
   String? label;
-  String? selectedValue;
+
   @override
   State<SingleChoice> createState() => _SingleChoiceState();
 }

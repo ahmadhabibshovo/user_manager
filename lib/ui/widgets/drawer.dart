@@ -81,7 +81,7 @@ class MyDrawerState extends State<MyDrawer> {
           ),
           SingleChoice(
             onSelect: (value) {
-              Get.find<FilterController>().setActiveStatus(value);
+              Get.find<FilterController>().setAreaFilter(value);
             },
             label: "Area",
             choices: ["All", ...Get.find<SetValueController>().area],
