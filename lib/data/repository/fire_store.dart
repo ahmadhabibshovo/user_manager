@@ -58,4 +58,15 @@ class FireStore {
     final documentRef = firestore.collection(docName).doc(id);
     documentRef.update(data);
   }
+  static changeMonth()async{
+    Query collection = FirebaseFirestore.instance
+        .collection('customer');
+    QuerySnapshot data = await collection.get();
+    for (var user in data.docs) {
+     if(user['isActive']){
+       update(data: {'customer_due':user['customer_due']+user['customer_bill']}, docName: 'customer', id: user.id);
+     }
+    }
+    
+  }
 }

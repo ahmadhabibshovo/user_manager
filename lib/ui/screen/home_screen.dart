@@ -2,6 +2,7 @@ import 'package:awesome_flutter_extensions/awesome_flutter_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:internet_connectivity_checker/internet_connectivity_checker.dart';
+import 'package:user_manager/data/repository/fire_store.dart';
 import 'package:user_manager/ui/screen/customer_list_screen.dart';
 import 'package:user_manager/ui/screen/defined_value_list_screen.dart';
 import 'package:user_manager/ui/screen/due_customer_list_screen.dart';
@@ -94,6 +95,10 @@ class _HomeScreenState extends State<HomeScreen> {
           } else {
             return Center(child: Text("Loading"));
           }
-        }));
+        },),
+    floatingActionButton: FloatingActionButton(onPressed: (){
+      FireStore.changeMonth();
+    }),
+    );
   }
 }

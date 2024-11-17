@@ -92,7 +92,7 @@ class _AddUserScreenState extends State<AddUserScreen> {
                         "isp_name": setValueController.selectedIsp,
                         "customer_name": customerNameTEController.text,
                         "isp_bill": ispBillTEController.text,
-                        "customer_bill": customerBillTEController.text,
+                        "customer_bill": int.parse(customerBillTEController.text),
                         "customer_due": int.parse(dueTEController.text),
                         "area": setValueController.selectedArea,
                         "pop": setValueController.selectedPop,
