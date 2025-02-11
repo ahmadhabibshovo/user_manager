@@ -13,12 +13,13 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   moveToNextScreen() async {
     bool authStatus = await AuthController.checkAuthStatus();
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     // Get.find<TotalDueController>().getTotalDue();
     Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
-            builder: (_) => authStatus ? HomeScreen() : SignInPage()),
+            builder: (_) =>
+                authStatus ? const HomeScreen() : const SignInPage()),
         (route) => false);
   }
 
@@ -31,6 +32,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold();
   }
 }

@@ -17,7 +17,7 @@ class _PaymentHistoryNavScreenState extends State<PaymentHistoryNavScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Payment History'),
+        title: const Text('Payment History'),
       ),
       body: SizedBox(
         width: double.infinity,
@@ -64,7 +64,7 @@ class _PaymentHistoryNavScreenState extends State<PaymentHistoryNavScreen> {
                   'Range',
                   style: context.textStyles.titleLarge,
                 )))
-          ].separatedBy(SizedBox(
+          ].separatedBy(const SizedBox(
             height: 20,
           )),
         ),

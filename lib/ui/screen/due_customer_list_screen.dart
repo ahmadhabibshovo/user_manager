@@ -20,7 +20,7 @@ class _DueCustomerListScreenState extends State<DueCustomerListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DueDrawer(),
+      drawer: const DueDrawer(),
       appBar: AppBar(
         title: const Text('Due Customer'),
       ),
@@ -48,13 +48,13 @@ class _DueCustomerListScreenState extends State<DueCustomerListScreen> {
                   visible: filterController.searchFilter == null
                       ? true
                       : (data[index]["customer_name"] as String)
-                      .toUpperCase()
-                      .contains(
-                      filterController.searchFilter!.toUpperCase()) &&
-                      (filterController.activeStatus == 'All' ||
-                          filterController.activeStatus == null
-                          ? true
-                          : data[index]['isActive'] == false),
+                              .toUpperCase()
+                              .contains(filterController.searchFilter!
+                                  .toUpperCase()) &&
+                          (filterController.activeStatus == 'All' ||
+                                  filterController.activeStatus == null
+                              ? true
+                              : data[index]['isActive'] == false),
                   child: GestureDetector(
                     onTap: () {
                       context.navigator.pushMaterial(
@@ -71,10 +71,9 @@ class _DueCustomerListScreenState extends State<DueCustomerListScreen> {
                           child: PopupMenuButton<String>(
                             onSelected: (newValue) async {
                               if (newValue == "Active") {
-                                FireStore.update(
-                                    data: {"isActive": !data[index]['isActive']},
-                                    docName: 'customer',
-                                    id: data[index].id);
+                                FireStore.update(data: {
+                                  "isActive": !data[index]['isActive']
+                                }, docName: 'customer', id: data[index].id);
                               }
                               if (newValue == "Payment") {
                                 var amount =
@@ -83,7 +82,8 @@ class _DueCustomerListScreenState extends State<DueCustomerListScreen> {
                                         username: data[index]['customer_name']);
                                 if (amount != null) {
                                   FireStore.update(data: {
-                                    'customer_due': data[index]['customer_due'] -
+                                    'customer_due': data[index]
+                                            ['customer_due'] -
                                         int.parse(amount)
                                   }, docName: 'customer', id: data[index].id);
                                   FireStore.add(

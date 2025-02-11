@@ -3,14 +3,14 @@ import 'package:user_manager/core/config/theme/app_colors.dart';
 
 class AppTheme {
   static final lightTheme = ThemeData(
-    appBarTheme: AppBarTheme(backgroundColor: AppColors.lightBackground),
+    appBarTheme: const AppBarTheme(backgroundColor: AppColors.lightBackground),
     fontFamily: 'Satoshi',
     primaryColor: AppColors.primary,
     brightness: Brightness.light,
     scaffoldBackgroundColor: AppColors.lightBackground,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        fixedSize: Size(double.maxFinite, 80),
+        fixedSize: const Size(double.maxFinite, 80),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         backgroundColor: AppColors.primary.withAlpha(200),
         foregroundColor: Colors.white,
@@ -21,7 +21,7 @@ class AppTheme {
     inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: Colors.transparent,
-        contentPadding: EdgeInsets.all(30),
+        contentPadding: const EdgeInsets.all(30),
         border: _outlineInputBorder(),
         enabledBorder: _outlineInputBorder(),
         focusedBorder: _outlineInputBorder(),
@@ -34,7 +34,7 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.darkBackground,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        fixedSize: Size(double.maxFinite, 80),
+        fixedSize: const Size(double.maxFinite, 80),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         backgroundColor: AppColors.primary.withAlpha(200),
         foregroundColor: Colors.white,
@@ -45,7 +45,7 @@ class AppTheme {
     inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: Colors.transparent,
-        contentPadding: EdgeInsets.all(30),
+        contentPadding: const EdgeInsets.all(30),
         border: _outlineInputBorder(),
         enabledBorder: _outlineInputBorder(),
         focusedBorder: _outlineInputBorder(),

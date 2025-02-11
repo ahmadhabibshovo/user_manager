@@ -40,7 +40,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
             first: "Mobile",
             second: "${widget.customer['mobile']}",
           )
-        ].separatedBy(SizedBox(
+        ].separatedBy(const SizedBox(
           height: 12,
         )),
       ),

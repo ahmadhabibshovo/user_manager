@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:user_manager/bindings.dart';
 import 'package:user_manager/core/config/theme/app_theme.dart';
-import 'package:user_manager/ui/screen/splash_screen.dart';
+
+import 'splash_screen.dart';
 
 class UserManager extends StatelessWidget {
   const UserManager({super.key});
@@ -10,10 +11,10 @@ class UserManager extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'User Manager',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      home: SplashScreen(),
+      home: const SplashScreen(),
       initialBinding: ControllerBindings(),
     );
   }

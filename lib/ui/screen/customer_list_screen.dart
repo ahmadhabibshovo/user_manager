@@ -29,15 +29,17 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
         actions: [
           IconButton(
               onPressed: () {
-                context.navigator.pushMaterial(DefinedValueListScreen());
+                context.navigator.pushMaterial(const DefinedValueListScreen());
               },
-              icon: Icon(Icons.settings))
+              icon: const Icon(Icons.settings))
         ],
       ),
       body: GetBuilder<FilterController>(builder: (filterController) {
         return StreamBuilder<QuerySnapshot>(
           stream: filterController
-              .filteredDocument(FireStore.get(documentName: 'customer'),)
+              .filteredDocument(
+                FireStore.get(documentName: 'customer'),
+              )
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
@@ -94,7 +96,7 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                                         user: data[index],
                                       ));
                                     },
-                                    icon: Icon(Icons.edit)),
+                                    icon: const Icon(Icons.edit)),
                                 PopupMenuButton<String>(
                                   onSelected: (newValue) async {
                                     if (newValue == "Active") {

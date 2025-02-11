@@ -77,7 +77,7 @@ class _DefinedValueScreenState extends State<DefinedValueScreen> {
                               });
                             }
                           },
-                          icon: Icon(Icons.edit)),
+                          icon: const Icon(Icons.edit)),
                     ),
                   ],
                 ),
@@ -99,7 +99,7 @@ class _DefinedValueScreenState extends State<DefinedValueScreen> {
             });
           }
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

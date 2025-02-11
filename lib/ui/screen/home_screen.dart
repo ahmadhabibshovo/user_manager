@@ -25,19 +25,21 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('HomeScreen'),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  context.navigator.pushMaterial(DefinedValueListScreen());
-                },
-                icon: Icon(Icons.settings))
-          ],
-        ),
-        body: ConnectivityBuilder(builder: (status) {
+      appBar: AppBar(
+        title: const Text('HomeScreen'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                context.navigator.pushMaterial(const DefinedValueListScreen());
+              },
+              icon: const Icon(Icons.settings))
+        ],
+      ),
+      body: ConnectivityBuilder(
+        builder: (status) {
           if (status == ConnectivityStatus.online) {
             return GetBuilder<TotalDueController>(
                 builder: (totalDueController) {
@@ -91,14 +93,15 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             });
           } else if (status == ConnectivityStatus.offline) {
-            return Center(child: Text("Ofline"));
+            return const Center(child: Text("Ofline"));
           } else {
-            return Center(child: Text("Loading"));
+            return const Center(child: Text("Loading"));
           }
-        },),
-    floatingActionButton: FloatingActionButton(onPressed: (){
-      FireStore.changeMonth();
-    }),
+        },
+      ),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        FireStore.changeMonth();
+      }),
     );
   }
 }
